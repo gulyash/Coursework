@@ -1,60 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp">
-
-        <TextView
-            android:id="@+id/dish_name"
-            android:layout_width="243dp"
-            android:layout_height="87dp"
-            android:text="name"
-            android:layout_row="0"
-            android:layout_column="0"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"
-            android:layout_toStartOf="@+id/dish_price"
-            android:gravity="left|center_vertical" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="218dp"
+        android:layout_height="64dp"
+        android:layout_weight="0.88">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="price"
-            android:id="@+id/dish_price"
-            android:layout_row="1"
-            android:layout_column="6"
-            android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/dish_amount"
-            android:layout_below="@+id/dish_amount"
-            android:layout_toStartOf="@+id/checkBox"
-            android:gravity="center_vertical|right" />
+            android:text="New Text"
+            android:id="@+id/dishPrice"
+            android:gravity="top|right"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="right" />
 
         <TextView
-            android:id="@+id/dish_amount"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:text="amount"
-            android:layout_row="0"
-            android:layout_column="13"
-            android:layout_alignParentTop="true"
-            android:layout_toStartOf="@+id/checkBox"
-            android:gravity="center_vertical|right" />
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/dishName"
+            android:gravity="left|center_vertical" />
 
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="47dp"
-            android:id="@+id/checkBox"
-            android:singleLine="true"
-            android:gravity="center_vertical"
-            android:layout_row="0"
-            android:layout_column="14"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentTop="true" />
-    </RelativeLayout>
+    </LinearLayout>
 
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="74dp"
+        android:id="@+id/checkBox" />
 </LinearLayout>
