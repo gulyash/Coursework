@@ -1,78 +1,51 @@
 package com.example.gulnara.fairsplit;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.util.Log;
-import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.support.v4.app.ListFragment;
-import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 /**
  * Created by Gulnara on 27.04.2016.
  */
 
-public class ThirdTab extends ListFragment{
-    String[] month ={
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"
-    };
-
-    public ViewFlipper viewFlipper;
-
+public class ThirdTab extends ListFragment {
+    ViewFlipper flipper;
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.second_tab,
+                container, false);
 
-        ListAdapter myListAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_multiple_choice,month);
-
-        setListAdapter(myListAdapter);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.third_tab_layout, container, false);
-
-    }
-
-    @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
-
-        String prompt =
-                "clicked item: " + getListView().getItemAtPosition(position).toString() + "\n\n";
-
-        prompt += "selected items: \n";
-        int count = getListView().getCount();
-        SparseBooleanArray sparseBooleanArray = getListView().getCheckedItemPositions();
-        for (int i = 0; i < count; i++){
-            if (sparseBooleanArray.get(i)) {
-                prompt += getListView().getItemAtPosition(i).toString() + "\n";
-            }
+        // Получаем объект ViewFlipper
+        flipper = (ViewFlipper)v.findViewById(R.id.viewFlipper);
+        // Создаем View и добавляем их в уже готовый flipper
+        //LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        int pages = (((MainActivity)getActivity()).mGuestAmount);
+        int layouts[] = new int[pages];
+        layouts[0]=R.layout.dummy;
+        for (int i = 1; i < pages; i++ ) {
+            layouts[i] = R.layout.second_tab_guest;
+        }
+        for (int i=0; i<pages;i++) {
+            flipper.addView(inflater.inflate(layouts[i], null));
         }
 
-        Toast.makeText(
-                getActivity(),
-                prompt,
-                Toast.LENGTH_LONG).show();
+        Button prev = (Button)v.findViewById(R.id.prevButton);
+        Button next = (Button)v.findViewById(R.id.nextButton);
+        prev.setOnClickListener(mOnClickListener);
+        next.setOnClickListener(mOnClickListener);
+        return v;
     }
 
+    private View.OnClickListener mOnClickListener = new View.OnClickListener(){
+        public void onClick(View v){
+            switch (v.getId()){
+                case R.id.nextButton : flipper.showNext(); break;
+                case R.id.prevButton : flipper.showPrevious(); break;
+            }
+        }
+    };
 }

@@ -45,6 +45,8 @@ public class AddDishDialog extends DialogFragment implements View.OnClickListene
         ((MainActivity)getActivity()).addNewDish(dishName.getText().toString(),
                 Integer.parseInt(dishAmount.getText().toString()), dishPrice.getText().toString());
 
+
+
         Toast toast = Toast.makeText(getActivity(),"Блюдо добавлено. " + dishName.getText().toString(), Toast.LENGTH_SHORT);
         toast.show();
 

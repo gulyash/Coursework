@@ -53,7 +53,7 @@ public class SecondTabAdapter extends BaseAdapter {
         }
 
         TextView txtDishName = (TextView) view.findViewById(R.id.dishName);
-        TextView txtAmount = (TextView) view.findViewById(R.id.dishAmount);
+        //TextView txtAmount = (TextView) view.findViewById(R.id.dishAmount);
         TextView txtPrice = (TextView) view.findViewById(R.id.dishPrice);
         CheckBox cbBuy = (CheckBox) view.findViewById(R.id.checkBox);
         // присваиваем чекбоксу обработчик

@@ -25,6 +25,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -100,10 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void addNewDish(String name, int amount, String price) {
-        Dishes.order.add(new Dish(name, amount, price));
-        for (int i=0; i<amount; i++) {
-            Dishes.guestchoice.add(new CheckDish(name,price, false));
-        }
+        Dishes.addDishEveryWhere(name, amount, price);
         firstTabAdapter.notifyDataSetChanged();
         secondTabAdapter.notifyDataSetChanged();
     }
@@ -136,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
     }
+
 
 
 }

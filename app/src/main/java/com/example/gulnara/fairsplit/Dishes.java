@@ -8,6 +8,13 @@ import java.util.ArrayList;
 public class Dishes {
     public static ArrayList<Dish> order=new ArrayList<Dish>();
     public static ArrayList<CheckDish> guestchoice = new ArrayList<CheckDish>();
-    public static double[] GuestPayables=new double[5];
-    public int getByPosition(){return 3;}
+
+    public static void addDishEveryWhere(String name, int amount, String price){
+        order.add(new Dish(name, amount, price));
+        for (int i=0; i<amount; i++) {
+            guestchoice.add(new CheckDish(name,price, false));
+        }
+
+    }
+
 }

@@ -9,37 +9,13 @@
         android:layout_height="wrap_content"
         android:id="@id/android:list" />
 
-    <ViewFlipper
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/viewFlipper"
-        android:layout_weight="0.89" >
-
-    </ViewFlipper>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal">
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Next"
-            android:id="@+id/nextButton"
-            android:layout_weight="0.00"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true" />
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Prevoius"
-            android:id="@+id/prevButton"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" />
     </RelativeLayout>
 
 </LinearLayout>

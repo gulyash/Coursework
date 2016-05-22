@@ -32,5 +32,4 @@ public class SecondTab  extends ListFragment {
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.second_tab_layout, null);
     }
-
 }
