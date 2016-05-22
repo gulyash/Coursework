@@ -19,52 +19,42 @@ import android.view.ViewGroup;
 public class NewSecondTab extends Fragment {
     static final String TAG = "myLogs";
     static int PAGE_COUNT=2;
+    static SecondTabPagerAdapter[] adapters=new SecondTabPagerAdapter[PAGE_COUNT];
 
-    private ViewPager pager;
-    PagerAdapter pagerAdapter;
+    ViewPager pager;
+    SecondTabPagerAdapter pagerAdapter;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        PAGE_COUNT = ((MainActivity)getActivity()).mGuestAmount;
+        pager = (ViewPager)getView().findViewById(R.id.secondTabViewPager);
+        pagerAdapter = new SecondTabPagerAdapter(getFragmentManager());
+        pager.setAdapter(pagerAdapter);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        PAGE_COUNT = ((MainActivity)getActivity()).mGuestAmount;
-        pager = (ViewPager) container.findViewById(R.id.secondTabViewPager);
-        pagerAdapter = new MyFragmentPagerAdapter(getFragmentManager());
-        pager.setAdapter(pagerAdapter);
 
-        pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            @Override
-            public void onPageSelected(int position) {
-                Log.d(TAG, "onPageSelected, position = " + position);
-            }
-
-            @Override
-            public void onPageScrolled(int position, float positionOffset,
-                                       int positionOffsetPixels) {
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-            }
-        });
         return inflater.inflate(R.layout.new_second_tab_layout, null);
     }
 
+    public static class SecondTabPagerAdapter extends FragmentPagerAdapter {
 
-    private class MyFragmentPagerAdapter extends FragmentPagerAdapter {
+        SecondTabAdapter[] adapters=new SecondTabAdapter[PAGE_COUNT];
 
-        public MyFragmentPagerAdapter(FragmentManager fm) {
+        public SecondTabPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
         @Override
         public Fragment getItem(int position) {
-            return new SecondTab();
+            // getItem is called to instantiate the fragment for the given page.
+            switch (position) {
+                //case 0: return new FirstTab();
+                default: return new SecondTab();
+            }
         }
 
         @Override
@@ -72,6 +62,21 @@ public class NewSecondTab extends Fragment {
             return PAGE_COUNT;
         }
 
+        @Override
+        public CharSequence getPageTitle(int position) {
+            switch (position) {
+                default:
+                    return "Гость " + (position + 1);
+            }
+        }
     }
+
+
+    public void refresh(){
+        for(int i=0; i<PAGE_COUNT;i++) {
+
+        }
+    };
+
 
 }

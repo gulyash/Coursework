@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
     public FirstTabAdapter firstTabAdapter;
     public SecondTabAdapter secondTabAdapter;
+    public NewSecondTab.SecondTabPagerAdapter secondTabPagerAdapter;
     public static int mGuestAmount;
 
     private ViewPager mViewPager;
@@ -69,12 +70,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public ListFragment getItem(int position) {
+        public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             switch (position) {
                 //case 0: return new FirstTab();
                 case 1: return new SecondTab();
-                case 2: return new ThirdTab();
+                case 2: return new NewSecondTab();
                 default:
                     return new FirstTab();
             }
@@ -105,6 +106,8 @@ public class MainActivity extends AppCompatActivity {
         Dishes.addDishEveryWhere(name, amount, price);
         firstTabAdapter.notifyDataSetChanged();
         secondTabAdapter.notifyDataSetChanged();
+        secondTabPagerAdapter.notifyDataSetChanged();
+        //ThirdTab.refresh();
     }
 
     DialogFragment adddishdlg;
